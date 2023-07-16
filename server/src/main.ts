@@ -13,7 +13,7 @@ async function bootstrap() {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
-  app.use(express.static(join(__dirname, '..', 'client', 'build')));
+  app.use(express.static(join(__dirname, '..', '..','client', 'build')));
 
   await app.listen(3000);
 }
