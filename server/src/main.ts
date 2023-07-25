@@ -12,8 +12,8 @@ async function bootstrap() {
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
-
-  app.use(express.static(join(__dirname, '..', '..','client', 'build')));
+  //정적 페이지 서빙
+  app.use(express.static(join(__dirname, '..', '..', 'client', 'build')));
 
   await app.listen(3000);
 }
