@@ -12,7 +12,7 @@ async function bootstrap() {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(express.static((0, path_1.join)(__dirname, '..', '..', 'client', 'build')));
-    await app.listen(3000);
+    await app.listen(3001);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

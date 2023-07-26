@@ -6,19 +6,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.KakaoLoginModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const page_module_1 = require("./page/page.module");
-const kakao_login_module_1 = require("./kakao-login/kakao-login.module");
-let AppModule = exports.AppModule = class AppModule {
+const kakao_login_service_1 = require("./kakao-login.service");
+const kakao_login_controller_1 = require("./kakao-login.controller");
+let KakaoLoginModule = exports.KakaoLoginModule = class KakaoLoginModule {
 };
-exports.AppModule = AppModule = __decorate([
+exports.KakaoLoginModule = KakaoLoginModule = __decorate([
     (0, common_1.Module)({
-        imports: [page_module_1.PageModule, kakao_login_module_1.KakaoLoginModule],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        providers: [kakao_login_service_1.KakaoLoginService],
+        controllers: [kakao_login_controller_1.KakaoLoginController]
     })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+], KakaoLoginModule);
+//# sourceMappingURL=kakao-login.module.js.map
