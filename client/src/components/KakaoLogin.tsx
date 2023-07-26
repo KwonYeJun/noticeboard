@@ -4,52 +4,78 @@ import axios from 'axios';
 import useSWR from 'swr';
 
 const KakaoLoginComponent: React.FC = () => {
-  const kakaoClientId = 'b9378165b8dd0245624ae217492f4ea6';
-
-  const fetchUserData = async (url: string) => {
-    const response = await axios.get(url);
-    return response.data;
-  };
-
-  const { data: responseData, error } = useSWR(`/api/some-endpoint?accessToken=${kakaoClientId}`, fetchUserData);
-
   useEffect(() => {
-    if (responseData) {
-      // 요청이 성공했을 때 처리할 로직
-      console.log('Response:', responseData);
-    }
-
-    if (error) {
-      // 요청이 실패했을 때 처리할 로직
-      console.log('Error:', error);
-    }
-  }, [responseData, error]);
-
-  const kakaoOnSuccess = async (data: any) => {
-    try {
-      console.log(data);
-      const idToken = data.response.access_token; // 엑세스 토큰 백엔드로 전달
-
-      // 요청 보내기
-      const response = await axios.get(`/api/some-endpoint?accessToken=${idToken}`);
-      console.log('Response:', response.data);
-    } catch (error) {
-      console.log('Error:', error);
-    }
+    // 카카오 SDK 초기화
+    window.Kakao.init("YOUR_APP_KEY");
+  }, []);
+  const handleLogin = () => {
+    window.Kakao.Auth.login({
+      success: async (response: { access_token: string }) => {
+        try {
+          const { access_token } = response;
+  
+          const result = await axios.post(
+            "YOUR_SERVER_URL/login",
+            { access_token },
+            { headers: { "Content-Type": "application/json" } }
+          );
+  
+          const data = result.data;
+  
+          if (result.status === 200) {
+            // 저장 처리 예
+            localStorage.setItem("token", data.token);
+            // 사용자 데이터 저장
+            // ...
+          } else {
+            console.log("Error:", data);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      fail: (error:any) => {
+        console.error(error);
+      },
+    });
   };
 
-  const kakaoOnFailure = (error: any) => {
-    console.log(error);
-  };
+  // const handleLogin = () => {
+  //   window.Kakao.Auth.login({
+  //     success: async ({ access_token }) => {
+  //       try {
+  //         const response = await fetch("YOUR_SERVER_URL/login", {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify({ access_token }),
+  //         });
+
+  //         const data = await response.json();
+
+  //         if (response.ok) {
+  //           // 저장 처리 예
+  //           localStorage.setItem("token", data.token);
+  //           // 사용자 데이터 저장
+  //           // ...
+  //         } else {
+  //           console.log("Error:", data);
+  //         }
+  //       } catch (error) {
+  //         console.error(error);
+  //       }
+  //     },
+  //     fail: (error) => {
+  //       console.error(error);
+  //     },
+  //   });
+  // };
 
   return (
-    <>
-      <KakaoLogin
-        token={kakaoClientId}
-        onSuccess={kakaoOnSuccess}
-        onFail={kakaoOnFailure}
-      />
-    </>
+    <div>
+      <button onClick={handleLogin}>Kakao Login</button>
+    </div>
   );
 };
 
