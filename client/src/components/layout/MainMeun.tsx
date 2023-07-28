@@ -1,12 +1,16 @@
 import React from 'react';
+import '../css/mainMeun.css'
 
 
 const MainMeun: React.FC = () => {
 
 
-  return(
+  return (
     <>
-  meun
+      <div className="mainMeun">
+
+        meun
+      </div>
     </>
   )
 
@@ -14,4 +18,4 @@ const MainMeun: React.FC = () => {
 
 
 
-export default  MainMeun
+export default MainMeun
