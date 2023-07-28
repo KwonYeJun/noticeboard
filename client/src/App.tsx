@@ -6,8 +6,12 @@ function App() {
 
   return (
     <>
+      <div className="container">
+
       <Logo />
       <KakaoLoginComponent />
+
+      </div>
     </>
   );
 }
