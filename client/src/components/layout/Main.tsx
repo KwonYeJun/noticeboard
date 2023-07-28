@@ -1,12 +1,15 @@
 import React from 'react';
-
-
+import MainImage from './MainImage';
+import MainMeun from './MainMeun';
 const Main: React.FC = () => {
 
 
   return (
     
-      <main></main>
+      <main>
+        <MainImage />
+        <MainMeun />
+      </main>
     
   )
 
