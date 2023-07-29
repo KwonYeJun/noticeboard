@@ -8,10 +8,11 @@ const Header: React.FC = () => {
       opacity: 0
     },
     visible: {
+      rotate:360,
       opacity: 1,
       transition: {
         when: "beforeChildren",
-        staggerChildren: 0.2
+        staggerChildren: 0.3
       }
     }
   };
@@ -33,6 +34,7 @@ const Header: React.FC = () => {
           justifyContent: 'space-around',
           width: '70%',
           height: '100%',
+          borderRadius: 20,
         }}>
         <motion.li variants={item}>item 1</motion.li>
         <motion.li variants={item}>item 2</motion.li>
