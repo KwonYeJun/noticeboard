@@ -1,20 +1,41 @@
 import React from 'react';
-
+import { motion } from "framer-motion";
 
 const Header: React.FC = () => {
 
+  const list = {
+    hidden: {
+      opacity: 0
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.2
+      }
+    }
+  };
 
-  return(
-    
+  const item = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+
+  return (
+
     <header>
-
-      
+      <motion.ul variants={list} initial="hidden" animate="visible">
+        <motion.li variants={item}>item 1</motion.li>
+        <motion.li variants={item}>item 2</motion.li>
+        <motion.li variants={item}>item 3</motion.li>
+      </motion.ul>
     </header>
-    
+
   )
 
 }
 
 
 
-export default  Header
+export default Header
