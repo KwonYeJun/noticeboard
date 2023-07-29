@@ -25,7 +25,15 @@ const Header: React.FC = () => {
   return (
 
     <header>
-      <motion.ul variants={list} initial="hidden" animate="visible">
+      <motion.ul variants={list} initial="hidden" animate="visible"
+        style={{
+          display: 'flex' ,
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+          width: '70%',
+          height: '100%',
+        }}>
         <motion.li variants={item}>item 1</motion.li>
         <motion.li variants={item}>item 2</motion.li>
         <motion.li variants={item}>item 3</motion.li>
