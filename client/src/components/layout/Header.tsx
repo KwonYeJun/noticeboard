@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 
 const Header: React.FC = () => {
 
+  // 부모 ul 태그의 애니메이션 효과를 주는 영역이라고 생각을 해주면 된다.
   const list = {
     hidden: {
       opacity: 0
     },
     visible: {
-      rotate:360,
       opacity: 1,
       transition: {
         when: "beforeChildren",
@@ -16,10 +16,10 @@ const Header: React.FC = () => {
       }
     }
   };
-
+// li자식 아이템 효과를 줄 수 있는 영역이다.
   const item = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 }
+    visible: {rotate:360, opacity: 1, y: 0 }
   };
 
 
