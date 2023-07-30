@@ -27,10 +27,13 @@ const Loge: React.FC = () => {
 
 
   return (
-    <div className="header">
-      <div className="logo" onClick={handleClick} ref={animationRef}>
-      </div>
+
+    <div className="logo" onClick={handleClick} ref={animationRef} style={{
+      width: '30%',
+      height: '100%'
+    }}>
     </div>
+
 
   );
 };
