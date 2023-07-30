@@ -20,9 +20,15 @@ const Header: React.FC = () => {
 // li자식 아이템 효과를 줄 수 있는 영역이다.
   const item = {
     hidden: { opacity: 0, y: 50 },
-    visible: {rotate:360, opacity: 1, y: 0 }
-  };
+    visible: {rotate:360, opacity: 1, y: 0  },
 
+
+  };
+const itemStyle ={
+  borderLeft:'none',
+  borderRight:'none',
+  borderTop:'none',
+}
 
   return (
 
@@ -38,10 +44,12 @@ const Header: React.FC = () => {
           width: '70%',
           height: '100%',
           borderRadius: 20,
+          listStyleType: 'none',
         }}>
-        <motion.li variants={item}>item 1</motion.li>
-        <motion.li variants={item}>item 2</motion.li>
-        <motion.li variants={item}>item 3</motion.li>
+        <motion.li style={itemStyle}      whileHover= {{scale :1.1}}
+        variants={item}>Home</motion.li>
+        <motion.li style={itemStyle}  variants={item}>Home 2</motion.li>
+        <motion.li style={itemStyle}  variants={item}>Home 3</motion.li>
       </motion.ul>
     </header>
 
