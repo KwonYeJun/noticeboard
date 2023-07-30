@@ -1,25 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
-import logo from '../logo.json'
+import logo from './logo.json'
 import lottie from 'lottie-web';
 
 
 
 
 const Loge: React.FC = () => {
-  const headerTag = document.querySelector('.logo');
+  const animationRef = useRef<HTMLDivElement>(null);
 
-  const test = useRef('');
   useEffect(() => {
-    if (headerTag) {
+    if (animationRef.current) {
       lottie.loadAnimation({
-        container: headerTag,
+        container: animationRef.current,
         renderer: "svg",
         loop: false,
         autoplay: true,
         animationData: logo
       });
     }
-  }, [test]);
+  }, []);
 
 
   const handleClick = () => {
@@ -29,7 +28,7 @@ const Loge: React.FC = () => {
 
   return (
     <div className="header">
-      <div className="logo" onClick={handleClick}>
+      <div className="logo" onClick={handleClick} ref={animationRef}>
       </div>
     </div>
 
