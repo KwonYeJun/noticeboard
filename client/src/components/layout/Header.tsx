@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import Logo from './logo'
 
 const Header: React.FC = () => {
 
@@ -26,6 +27,8 @@ const Header: React.FC = () => {
   return (
 
     <header>
+      <Logo />
+
       <motion.ul variants={list} initial="hidden" animate="visible"
         style={{
           display: 'flex' ,
