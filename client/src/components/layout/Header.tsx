@@ -46,10 +46,10 @@ const itemStyle ={
           borderRadius: 20,
           listStyleType: 'none',
         }}>
-        <motion.li style={itemStyle}      whileHover= {{scale :1.1}}
+        <motion.li style={itemStyle}    whileHover= {{scale :1.1}}
         variants={item}>Home</motion.li>
-        <motion.li style={itemStyle}  variants={item}>Home 2</motion.li>
-        <motion.li style={itemStyle}  variants={item}>Home 3</motion.li>
+        <motion.li style={itemStyle}  whileHover= {{scale :1.1}} variants={item}>Home 2</motion.li>
+        <motion.li style={itemStyle}  whileHover= {{scale :1.1}} variants={item}>Home 3</motion.li>
       </motion.ul>
     </header>
 
