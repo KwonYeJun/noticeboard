@@ -11,24 +11,16 @@ const MainMeun: React.FC = () => {
     },
     visible: {
       opacity: 1,
-      transition: {
-        when: "beforeChildren",
-        staggerChildren: 0.3
+      // transition: {
+      //   when: "beforeChildren",
+      //   staggerChildren: 0.3
+      // }
+      transition:{
+        duration: 1.5
       }
     }
   };
-  // li자식 아이템 효과를 줄 수 있는 영역이다.
-  const item = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { rotate: 360, opacity: 1, y: 0 },
 
-
-  };
-  const itemStyle = {
-    borderLeft: 'none',
-    borderRight: 'none',
-    borderTop: 'none',
-  }
 
   return (
     <>
