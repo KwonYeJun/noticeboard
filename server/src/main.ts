@@ -15,7 +15,8 @@ async function bootstrap() {
   //정적 페이지 서빙
   app.use(express.static(join(__dirname, '..', '..', 'client', 'build')));
 
-  await app.listen(3001);
+  
+  await app.listen(2222);
 }
 
 bootstrap();
