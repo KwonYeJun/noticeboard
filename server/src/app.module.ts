@@ -3,9 +3,15 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PageModule } from './page/page.module';
 import { KakaoLoginModule } from './kakao-login/kakao-login.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
-  imports: [PageModule, KakaoLoginModule],
+  imports: [  ConfigModule.forRoot({
+    isGlobal: true,
+    envFilePath: '.env',
+  }),
+  HttpModule,KakaoLoginModule,PageModule],
   controllers: [AppController],
   providers: [AppService],
 })
