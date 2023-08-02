@@ -12,11 +12,17 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const page_module_1 = require("./page/page.module");
 const kakao_login_module_1 = require("./kakao-login/kakao-login.module");
+const config_1 = require("@nestjs/config");
+const axios_1 = require("@nestjs/axios");
 let AppModule = exports.AppModule = class AppModule {
 };
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [page_module_1.PageModule, kakao_login_module_1.KakaoLoginModule],
+        imports: [config_1.ConfigModule.forRoot({
+                isGlobal: true,
+                envFilePath: '.env',
+            }),
+            axios_1.HttpModule, kakao_login_module_1.KakaoLoginModule, page_module_1.PageModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
