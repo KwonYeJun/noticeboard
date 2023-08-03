@@ -17,7 +17,7 @@ const fetcher = async (url: any) => {
 const KakaoLoginComponent: React.FC = () => {
   // useSWR 훅 호출을 조건부가 아닌 항상 일정하게 호출되게 수정
   const { data, error } = useSWR(
-    authorizationCode ? `http://localhost:2222/kakao-login/userinfo?code=${authorizationCode}` : null,
+    authorizationCode ? `/kakao-login/userinfo?code=${authorizationCode}` : null,
     fetcher
   );
 
