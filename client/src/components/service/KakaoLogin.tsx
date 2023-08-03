@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import useSWR from 'swr';
 
+// 카카오 앱 키
 const meKey = 'ab73463344398ef2f9f175e4c8801d20';
+// 카카오 등록 url
 const Redirect_URL = 'http://localhost:2222/';
 const urlParams = new URLSearchParams(window.location.search);
 const authorizationCode = urlParams.get('code');
