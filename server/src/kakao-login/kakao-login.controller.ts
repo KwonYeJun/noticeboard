@@ -42,6 +42,7 @@ export class KakaoLoginController {
   @Get('userinfo')
   @HttpCode(HttpStatus.OK)
   async getUserInfo(@Query('code') code: string) {
+    console.log('getUserInfo', code);
     return await this.kakaoLoginService.getUserInfo(code);
   }
 }

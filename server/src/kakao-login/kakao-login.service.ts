@@ -42,8 +42,8 @@ export class KakaoLoginService {
     ) {}
 
     async getUserInfo(code: string) {
-      const client_id = this.configService.get<string>('KAKAO_CLIENT_ID');
-      const redirect_url = this.configService.get<string>('KAKAO_REDIRECT_URI');
+      const client_id = this.configService.get<string>('ab73463344398ef2f9f175e4c8801d20');
+      const redirect_url = this.configService.get<string>('http://localhost:2222/');
       const tokenRequestUrl = `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${client_id}&redirect_uri=${redirect_url}&code=${code}`;
   
       const tokenResponse = await this.httpService.get(tokenRequestUrl).toPromise();
