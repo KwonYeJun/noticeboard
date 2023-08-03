@@ -65,8 +65,10 @@ export class KakaoLoginService {
         },
       })
       .toPromise();
+      // 접근 토큰 데이터
       console.log('data', accessToken);
-    console.log('data', data);
+      // 사용자 정보를 나타내는 데이터
+      console.log('data', data);
 
     return data;
   }
