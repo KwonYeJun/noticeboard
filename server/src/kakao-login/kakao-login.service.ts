@@ -3,7 +3,36 @@ import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import axios from 'axios';
+// @Injectable()
+// export class KakaoLoginService {
+//   constructor(
+//     private readonly httpService: HttpService,
+//     private readonly configService: ConfigService,
+//   ) {}
 
+//   async getUserInfo(code: string) {
+//     // const client_id = 'abcdefg1234567';
+// // const redirect_url = 'http://localhost:2222/kakao-login/userinfo';
+
+//     const client_id = this.configService.get<string>('945261');
+//     const redirect_url = this.configService.get<string>('http://localhost:2222/kakao-login/userinfo');
+//     const tokenRequestUrl = `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${client_id}&redirect_uri=${redirect_url}&code=${code}`;
+
+//     const tokenResponse = await this.httpService.get(tokenRequestUrl).toPromise();
+//     const accessToken = tokenResponse.data.access_token;
+
+//     const userProfileUrl = 'https://kapi.kakao.com/v2/user/me';
+//     const { data } = await this.httpService
+//       .get(userProfileUrl, {
+//         headers: {
+//           Authorization: `Bearer ${accessToken}`,
+//         },
+//       })
+//       .toPromise();
+
+//     return data;
+//   }
+// }
 @Injectable()
 export class KakaoLoginService {
 
@@ -18,8 +47,12 @@ export class KakaoLoginService {
       const tokenRequestUrl = `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${client_id}&redirect_uri=${redirect_url}&code=${code}`;
   
       const tokenResponse = await this.httpService.get(tokenRequestUrl).toPromise();
+      
+      // const tokenResponse = await this.httpService
+      // .post(tokenRequestUrl, {}, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+      // .toPromise();
       const accessToken = tokenResponse.data.access_token;
-  
+
       const userProfileUrl = 'https://kapi.kakao.com/v2/user/me';
       const { data } = await this.httpService
         .get(userProfileUrl, {
@@ -34,6 +67,7 @@ export class KakaoLoginService {
       
       return data;
     }
+  }
 
   // private readonly kakaoBaseUrl = 'https://kapi.kakao.com';
 
@@ -50,4 +84,4 @@ export class KakaoLoginService {
   //   }
   // }
 
-}
+// }
