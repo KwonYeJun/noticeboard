@@ -31,7 +31,7 @@
 // }
 
 // kakao-login.controller.ts
-import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post , Get ,Query} from '@nestjs/common';
 import { KakaoLoginService } from './kakao-login.service';
 import { KakaoLoginDto } from './kakao-login.dto';
 
@@ -39,9 +39,9 @@ import { KakaoLoginDto } from './kakao-login.dto';
 export class KakaoLoginController {
   constructor(private readonly kakaoLoginService: KakaoLoginService) {}
 
-  @Post('userinfo')
+  @Get('userinfo')
   @HttpCode(HttpStatus.OK)
-  async getUserInfo(@Body() kakaoLoginDto: KakaoLoginDto) {
-    return await this.kakaoLoginService.getUserInfo(kakaoLoginDto.code);
+  async getUserInfo(@Query('code') code: string) {
+    return await this.kakaoLoginService.getUserInfo(code);
   }
 }
