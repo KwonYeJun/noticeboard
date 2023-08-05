@@ -71,10 +71,7 @@ const fetcher = async (url: any) => {
 const KakaoLoginComponent: React.FC = () => {
   const [popup, setPopup] = useState<Window | null>(null);
   // useSWR 훅 호출을 조건부가 아닌 항상 일정하게 호출되게 수정
-  const { data, error } = useSWR(
-    authorizationCode ? `/kakao-login/userinfo?code=${authorizationCode}` : null,
-    fetcher
-  );
+
   const handleKakaoLogin = () => {
     const kakaoAuthURL = `https://kauth.kakao.com/oauth/authorize?client_id=${meKey}&redirect_uri=${Redirect_URL}&response_type=code`;
     // 모달창이 뜨기 위하여 메서드 수정
@@ -99,6 +96,10 @@ const KakaoLoginComponent: React.FC = () => {
 
   const receiveMessage = (event: MessageEvent) => {
     if (event.data === 'kakao-login-success') {
+      const { data, error } = useSWR(
+        authorizationCode ? `/kakao-login/userinfo?code=${authorizationCode}` : null,
+        fetcher
+      );
       // 모달 창에서 로그인 성공한 경우의 처리
       // 이 부분에서 원하는 동작을 수행하세요
       // 예: 사용자 데이터 저장, 상태 업데이트 등
