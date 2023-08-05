@@ -77,6 +77,7 @@ const KakaoLoginComponent: React.FC = () => {
   );
   const handleKakaoLogin = () => {
     const kakaoAuthURL = `https://kauth.kakao.com/oauth/authorize?client_id=${meKey}&redirect_uri=${Redirect_URL}&response_type=code`;
+    // 모달창이 뜨기 위하여 메서드 수정
     const newPopup = window.open(kakaoAuthURL, 'Kakao Login', 'width=500,height=600');
     setPopup(newPopup);
   };
@@ -86,8 +87,6 @@ const KakaoLoginComponent: React.FC = () => {
       setPopup(null);
     }
   };
-
-
 
   useEffect(() => {
     window.addEventListener('focus', checkPopup);
