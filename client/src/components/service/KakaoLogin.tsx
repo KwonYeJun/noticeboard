@@ -100,7 +100,7 @@ const KakaoLoginComponent: React.FC = () => {
   const receiveMessage = async (event: MessageEvent) => {
     if (event.data === 'kakao-login-success') {
       try {
-        const response = await fetch('/path-to-server-endpoint');
+        const response = await fetch('/kakao-login/token');
         const data = await response.json();
         // 서버에서 받아온 데이터를 이용하여 필요한 작업 수행
         // 예: 사용자 데이터 저장, 상태 업데이트 등
