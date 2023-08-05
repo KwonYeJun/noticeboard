@@ -102,8 +102,13 @@ const KakaoLoginComponent: React.FC = () => {
       try {
         const response = await fetch('/kakao-login/token');
         const data = await response.json();
+        console.log('data',data);
         // 서버에서 받아온 데이터를 이용하여 필요한 작업 수행
         // 예: 사용자 데이터 저장, 상태 업데이트 등
+
+        // 쿠키에 토큰 저장
+        document.cookie = `token=${data.token}; path=/;`;
+
         setPopup(null); // 모달 창 닫기
         window.location.reload();
       } catch (error) {
