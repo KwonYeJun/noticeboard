@@ -90,10 +90,21 @@ const KakaoLoginComponent: React.FC = () => {
 
   useEffect(() => {
     window.addEventListener('focus', checkPopup);
+    window.addEventListener('message', receiveMessage, false);
     return () => {
       window.removeEventListener('focus', checkPopup);
+      window.removeEventListener('message', receiveMessage);
     };
-  }, []);
+  }, [popup]);
+
+  const receiveMessage = (event: MessageEvent) => {
+    if (event.data === 'kakao-login-success') {
+      // 모달 창에서 로그인 성공한 경우의 처리
+      // 이 부분에서 원하는 동작을 수행하세요
+      // 예: 사용자 데이터 저장, 상태 업데이트 등
+      setPopup(null); // 모달 창 닫기
+    }
+  };
 
   return (
     <div>
