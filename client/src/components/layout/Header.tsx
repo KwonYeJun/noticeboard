@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import Logo from './logo'
-import KakaoLoginComponent from '../service/KakaoLogin'
+// import KakaoLoginComponent from '../service/KakaoLogin'
 const Header: React.FC = () => {
 
   // 부모 ul 태그의 애니메이션 효과를 주는 영역이라고 생각을 해주면 된다.
@@ -50,7 +50,7 @@ const itemStyle ={
         variants={item}>Home</motion.li>
         <motion.li style={itemStyle}  whileHover= {{scale :1.1}} variants={item}>Home 2</motion.li>
         <motion.li style={itemStyle}  whileHover= {{scale :1.1}} variants={item}>Home 3</motion.li>
-        <KakaoLoginComponent />
+        {/* <KakaoLoginComponent /> */}
       </motion.ul>
     </header>
 

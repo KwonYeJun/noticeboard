@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import KakaoLoginComponent from '../service/KakaoLogin'
 
-import Main from '../layout/Main'
-import Header from '../layout/Header'
 
 const LoginCheckPage: React.FC = () => {
 
 
   return (
     <>
-  
+      <KakaoLoginComponent />
     </>
 
   )
