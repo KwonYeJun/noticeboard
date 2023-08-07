@@ -91,14 +91,23 @@ const [isLoading, setIsLoading] = useState(false);
     }
   };
 
-  useEffect(() => {
-    window.addEventListener('focus', checkPopup);
-    window.addEventListener('message', receiveMessage, false);
-    return () => {
-      window.removeEventListener('focus', checkPopup);
-      window.removeEventListener('message', receiveMessage);
-    };
-  }, [popup]);
+  //변경 전 버전
+  // useEffect(() => {
+  //   window.addEventListener('focus', checkPopup);
+  //   window.addEventListener('message', receiveMessage, false);
+  //   return () => {
+  //     window.removeEventListener('focus', checkPopup);
+  //     window.removeEventListener('message', receiveMessage);
+  //   };
+  // }, [popup]);
+  
+  // 변경 후: useEffect
+useEffect(() => {
+  window.addEventListener("message", receiveMessage, false);
+  return () => {
+    window.removeEventListener("message", receiveMessage);
+  };
+}, [popup]);
 
   // 토큰 요청 전에 로딩 상태를 true로 변경
 const receiveMessage = async (event: MessageEvent) => {
