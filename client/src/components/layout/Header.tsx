@@ -32,6 +32,10 @@ const itemStyle ={
   borderTop:'none',
 }
 
+ // 페이지 요청 이벤트 핸들러
+ const handlePageRequest = (path: string) => {
+  navigate(path); // 페이지 이동
+};
   return (
 
     <header>
@@ -53,6 +57,14 @@ const itemStyle ={
         <motion.li style={itemStyle}  whileHover= {{scale :1.1}} variants={item}>Home 2</motion.li>
         <motion.li style={itemStyle}  whileHover= {{scale :1.1}} variants={item}>Home 3</motion.li>
         {/* <KakaoLoginComponent /> */}
+        <motion.li
+          style={itemStyle}
+          whileHover={{ scale: 1.1 }}
+          variants={item}
+          onClick={() => handlePageRequest('/user/auth/login')} // 버튼 클릭 시 이벤트 호출
+        >
+          Login / auth
+        </motion.li>
       </motion.ul>
     </header>
 
