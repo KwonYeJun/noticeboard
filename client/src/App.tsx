@@ -1,16 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import './App.css';
-
-import Main from './components/layout/Main'
-import Header from './components/layout/Header'
+import MainPage from './components/page/mainPage'
 
 function App() {
+  const location = useLocation();
+  const [pageTitle, setPageTitle] = useState("");
+  const [LatLng, setLatLng] = useState<number[]>([]);
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/":
+        setPageTitle("");
+        break;
+      case "/main":
+        setPageTitle("홈");
+        break;
+      default:
+        setPageTitle("홈");
+        break;
+    }
+  }, [location.pathname]);
 
   return (
     <>
       <div className="container">
-      <Header />
-      <Main />
+      <Routes>
+        // 추후 인트로 페이지겸 로딩 페이지 구상 계획
+          {/* <Route path="/" element={<IntroPage />} /> */}
+        </Routes>
+        <Routes>
+          <Route path="/main" element={<MainPage />} />
+        </Routes>
+        {[
+          "/"
+        ].includes(location.pathname) ? null : (
+          <>
+          </>
+        )}
       </div>
     </>
   );
