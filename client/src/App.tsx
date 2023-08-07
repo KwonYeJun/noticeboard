@@ -28,12 +28,13 @@ function App() {
   return (
     <>
       <div className="container">
-        <Routes>
+        {/* <Routes>
         // 추후 인트로 페이지겸 로딩 페이지 구상 계획
-          {/* <Route path="/" element={<IntroPage />} /> */}
-        </Routes>
+          <Route path="/" element={<IntroPage />} />
+        </Routes> */}
         <Routes>
           <Route path="/main" element={<MainPage />} />
+          <Route path="/user/auth/login" element={<LoginCheckPage />} />
         </Routes>
         {[
           "/"
