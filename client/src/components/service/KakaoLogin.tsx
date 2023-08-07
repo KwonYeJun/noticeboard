@@ -70,6 +70,9 @@ const fetcher = async (url: any) => {
 
 const KakaoLoginComponent: React.FC = () => {
   const [popup, setPopup] = useState<Window | null>(null);
+//모달창 로딩 설정 하기
+const [isLoading, setIsLoading] = useState(false);
+
   // useSWR 훅 호출을 조건부가 아닌 항상 일정하게 호출되게 수정
   const { data, error } = useSWR(
     authorizationCode ? `/kakao-login/userinfo?code=${authorizationCode}` : null,
