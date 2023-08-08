@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import '../css/mainMeun.css';
 interface MainMeunProps {
-  handleSlideChange: () => void;
+  handleNextSlide: () => void;
+  handlePrevSlide: () => void;
 }
 
-const MainMeun: React.FC<MainMeunProps> = ({ handleSlideChange }) => {
+const MainMeun: React.FC<MainMeunProps> = ({ handleNextSlide, handlePrevSlide }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
 
 
@@ -39,7 +40,8 @@ const MainMeun: React.FC<MainMeunProps> = ({ handleSlideChange }) => {
           listStyleType: 'none',
         }}
       >
-         <button onClick={handleSlideChange}>Change Slide</button>
+        <button onClick={handlePrevSlide}>Previous Slide</button>
+        <button onClick={handleNextSlide}>Next Slide</button>
       </motion.div>
       {/* Other menu boxes */}
     </div>
