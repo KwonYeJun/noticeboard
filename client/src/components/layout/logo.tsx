@@ -7,19 +7,22 @@ import lottie from 'lottie-web';
 
 const Loge: React.FC = () => {
   const animationRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (animationRef.current) {
-      lottie.loadAnimation({
+      const anim = lottie.loadAnimation({
         container: animationRef.current,
-        renderer: "svg",
+        renderer: 'svg',
         loop: false,
         autoplay: true,
         animationData: logo
       });
+
+      // 두번 렌더링 되는 버그 수정
+      return () => {
+        anim.destroy(); // Cleanup the animation when the component unmounts
+      };
     }
   }, []);
-
 
   const handleClick = () => {
     window.open('');
