@@ -7,7 +7,7 @@ import MainMeun from './MainMeun';
 const Main: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const images = [
-    { src: "./test.png", bgColor: "#f1c40f" },
+    { src: "./test.png", bgColor: "#130D17" },
     { src: "./test2.png", bgColor: "#2ecc71" },
     { src: "./image3.jpg", bgColor: "#3498db" },
   ];
