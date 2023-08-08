@@ -6,22 +6,31 @@ import MainMeun from './MainMeun';
 
 const Main: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const images = ["./test.png", "./test2.png", "./image3.jpg"];
+  const images = [
+    { src: "./test.png", bgColor: "#f1c40f" },
+    { src: "./test2.png", bgColor: "#2ecc71" },
+    { src: "./image3.jpg", bgColor: "#3498db" },
+  ];
+  const [currentBgColor, setCurrentBgColor] = useState<string>(images[0].bgColor);
+
 
   const handleNextSlide = () => {
-    setCurrentSlide((currentSlide + 1) % images.length);
-  };
+    const newSlide = (currentSlide + 1) % images.length;
+    setCurrentSlide(newSlide);
+    setCurrentBgColor(images[newSlide].bgColor);
+};
 
-  const handlePrevSlide = () => {
-    setCurrentSlide((currentSlide - 1 + images.length) % images.length);
-  };
-
+const handlePrevSlide = () => {
+    const newSlide = (currentSlide - 1 + images.length) % images.length;
+    setCurrentSlide(newSlide);
+    setCurrentBgColor(images[newSlide].bgColor);
+};
   return (
 
-    <main>
-      <MainImage currentSlide={currentSlide} images={images} />
-      <MainMeun handleNextSlide={handleNextSlide} handlePrevSlide={handlePrevSlide} />
-    </main>
+    <main style={{ background: currentBgColor }}>
+    <MainImage currentSlide={currentSlide} images={images} />
+    <MainMeun handleNextSlide={handleNextSlide} handlePrevSlide={handlePrevSlide} />
+  </main>
 
   )
 
