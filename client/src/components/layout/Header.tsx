@@ -39,7 +39,9 @@ const itemStyle ={
   return (
 
     <header>
-      <Logo />
+      
+        <Logo />
+  
 
       <motion.ul variants={list} initial="hidden" animate="visible"
         style={{
@@ -56,7 +58,6 @@ const itemStyle ={
         variants={item}>Home</motion.li>
         <motion.li style={itemStyle}  whileHover= {{scale :1.1}} variants={item}>Home 2</motion.li>
         <motion.li style={itemStyle}  whileHover= {{scale :1.1}} variants={item}>Home 3</motion.li>
-        {/* <KakaoLoginComponent /> */}
         <motion.li
           style={itemStyle}
           whileHover={{ scale: 1.1 }}
