@@ -1,79 +1,51 @@
-import React from 'react';
-import '../css/mainMeun.css'
+import React, { useState } from 'react';
 import { motion } from "framer-motion";
+import '../css/mainMeun.css';
+interface MainMeunProps {
+  handleNextSlide: () => void;
+  handlePrevSlide: () => void;
+}
 
-const MainMeun: React.FC = () => {
+const MainMeun: React.FC<MainMeunProps> = ({ handleNextSlide, handlePrevSlide }) => {
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
-  // 부모 ul 태그의 애니메이션 효과를 주는 영역이라고 생각을 해주면 된다.
-  const list = {
+
+  const listVariants = {
     hidden: {
       opacity: 0
     },
     visible: {
       opacity: 1,
-      // transition: {
-      //   when: "beforeChildren",
-      //   staggerChildren: 0.3
-      // }
-      transition:{
+      transition: {
         duration: 1.5
       }
     }
   };
 
-
   return (
-    <>
-      <div className="mainMeun">
-        <motion.div variants={list} initial="hidden" animate="visible"
-          className='mainMeunBox'
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            width: '70%',
-            height: '35%',
-            borderRadius: 20,
-            listStyleType: 'none',
-          }}>
-          1
-        </motion.div>
+    <div className="mainMeun">
+      <motion.div
+        variants={listVariants}
+        initial="hidden"
+        animate="visible"
+        className='mainMeunBox'
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+          width: '70%',
+          height: '35%',
+          borderRadius: 20,
+          listStyleType: 'none',
+        }}
+      >
+        <button onClick={handlePrevSlide}>Previous Slide</button>
+        <button onClick={handleNextSlide}>Next Slide</button>
+      </motion.div>
+      {/* Other menu boxes */}
+    </div>
+  );
+};
 
-        <motion.div variants={list} initial="hidden" animate="visible"
-          className='mainMeunBox'
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            width: '70%',
-            height: '20%',
-            borderRadius: 20,
-            listStyleType: 'none',
-          }}>
-          1
-        </motion.div>
-        <motion.div variants={list} initial="hidden" animate="visible"
-          className='mainMeunBox'
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            width: '70%',
-            height: '20%',
-            borderRadius: 20,
-            listStyleType: 'none',
-          }}>
-          1
-        </motion.div>
-      </div>
-    </>
-  )
-
-}
-
-
-
-export default MainMeun
+export default MainMeun;
