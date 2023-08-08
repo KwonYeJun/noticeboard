@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import '../css/mainMeun.css';
+interface MainMeunProps {
+  handleSlideChange: () => void;
+}
 
-const MainMeun: React.FC = () => {
+const MainMeun: React.FC<MainMeunProps> = ({ handleSlideChange }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const images = ['./test.png', './test2.png', './image3.jpg'];
-  const colors = ['#ff0000', '#00ff00', '#0000ff'];
 
-  const handleSlideChange = () => {
-    setCurrentSlide((currentSlide + 1) % images.length);
-  };
 
   const listVariants = {
     hidden: {
@@ -39,11 +37,9 @@ const MainMeun: React.FC = () => {
           height: '35%',
           borderRadius: 20,
           listStyleType: 'none',
-          backgroundImage: `url(${images[currentSlide]})`, // Set background image
-          backgroundColor: colors[currentSlide], // Set background color
         }}
       >
-        <button onClick={handleSlideChange}>Change Slide</button>
+         <button onClick={handleSlideChange}>Change Slide</button>
       </motion.div>
       {/* Other menu boxes */}
     </div>

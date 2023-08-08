@@ -1,17 +1,21 @@
-import React from 'react';
-import '../css/mainImage.css';
+import React, { useEffect, useState } from 'react';
 
-interface MainImageProps {
-  currentSlide: number;
-  images: string[];
+import Main from '../layout/Main'
+import Header from '../layout/Header'
+
+const MainPage: React.FC = () => {
+
+
+  return (
+    <>
+      <Header />
+      <Main />
+    </>
+
+  )
+
 }
 
-const MainImage: React.FC<MainImageProps> = ({ currentSlide, images }) => {
-  return (
-    <div className="mainImgBox">
-      <img src={images[currentSlide]} alt="asd" id="slider-image" />
-    </div>
-  );
-};
 
-export default MainImage;
+
+export default MainPage
