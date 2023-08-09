@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import logo from './logo.json'
+import logo from './logo2.json'
 import lottie from 'lottie-web';
 
 
