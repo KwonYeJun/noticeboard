@@ -10,29 +10,10 @@ function App() {
   const [pageTitle, setPageTitle] = useState("");
   const [LatLng, setLatLng] = useState<number[]>([]);
 
-  // useEffect(() => {
-  //   switch (location.pathname) {
-  //     case "/":
-  //       setPageTitle("");
-  //       break;
-  //     case "/main":
-  //       setPageTitle("홈");
-  //       break;
-  //     case "/user/auth/login":
-  //       setPageTitle("login");
-  //     default:
-  //       setPageTitle("홈");
-  //       break;
-  //   }
-  // }, [location.pathname]);
-
   return (
     <>
       <div className="container">
-        {/* <Routes>
-        // 추후 인트로 페이지겸 로딩 페이지 구상 계획
-          <Route path="/" element={<IntroPage />} />
-        </Routes> */}
+
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/user/auth/login" element={<LoginCheckPage />} />
