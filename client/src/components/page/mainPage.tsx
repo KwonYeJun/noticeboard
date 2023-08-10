@@ -3,18 +3,19 @@ import React, { useEffect, useState } from 'react';
 import Main from '../layout/Main'
 import Header from '../layout/Header'
 
-const MainPage: React.FC = () => {
+interface MainPageProps {
+  currentBgColor: string;
+  setCurrentBgColor: (color: string) => void;
+}
 
-
+const MainPage: React.FC<MainPageProps> = ({ currentBgColor, setCurrentBgColor }) => {
   return (
     <>
-      <Header />
-      <Main />
+      <Header currentBgColor={currentBgColor} />
+      <Main currentBgColor={currentBgColor} setCurrentBgColor={setCurrentBgColor} />
     </>
-
-  )
-
-}
+  );
+};
 
 
 
