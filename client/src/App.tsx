@@ -9,14 +9,18 @@ function App() {
   const location = useLocation();
   const [pageTitle, setPageTitle] = useState("");
   const [LatLng, setLatLng] = useState<number[]>([]);
-
+  const [currentBgColor, setCurrentBgColor] = useState("#ffffff");
+  
   return (
     <>
       <div className="container">
 
         <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/user/auth/login" element={<LoginCheckPage />} />
+        <Route
+          path="/"
+          element={<MainPage currentBgColor={currentBgColor} setCurrentBgColor={setCurrentBgColor} />}
+        />
+        <Route path="/user/auth/login" element={<LoginCheckPage />} />
         </Routes>
         {[
           "/"
