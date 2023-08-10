@@ -48,50 +48,35 @@ const MainMeun: React.FC<MainMeunProps> = ({ handleNextSlide, handlePrevSlide })
   return (
     <div className="mainMeun">
       <motion.div variants={list} initial="hidden" animate="visible"
-          className='mainMeunBox'
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            width: '70%',
-            height: '35%',
-            borderRadius: 20,
-            listStyleType: 'none',
-          }}>
-          1
-        </motion.div>
+        className='mainMeunBox'
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+          width: '70%',
+          height: '35%',
+          borderRadius: 20,
+          listStyleType: 'none',
+        }}>
+        1
+      </motion.div>
 
-        <motion.div variants={list} initial="hidden" animate="visible"
-          className='mainMeunBox'
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            width: '70%',
-            height: '20%',
-            borderRadius: 20,
-            listStyleType: 'none',
-          }}>
-          1
-        </motion.div>
-        <motion.div variants={list} initial="hidden" animate="visible"
-          className='mainMeunBox'
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            width: '70%',
-            height: '20%',
-            borderRadius: 20,
-            listStyleType: 'none',
-          }}>
-          1
-        </motion.div>
-      
-      
+      <motion.div variants={list} initial="hidden" animate="visible"
+        className='mainMeunBox'
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+          width: '70%',
+          height: '20%',
+          borderRadius: 20,
+          listStyleType: 'none',
+        }}>
+        1
+      </motion.div>
+
       <motion.div
         variants={listVariants}
         initial="hidden"
