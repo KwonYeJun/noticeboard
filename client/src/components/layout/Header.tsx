@@ -4,7 +4,11 @@ import Logo from './logo'
 // import KakaoLoginComponent from '../service/KakaoLogin'
 import { useNavigate } from 'react-router-dom';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  currentBgColor: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ currentBgColor }) => {
   const navigate = useNavigate(); // useNavigate 초기화
   // 부모 ul 태그의 애니메이션 효과를 주는 영역이라고 생각을 해주면 된다.
   const list = {
