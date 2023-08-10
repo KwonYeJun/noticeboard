@@ -42,7 +42,7 @@ const itemStyle ={
 };
   return (
 
-    <header>
+    <header style={{ background: currentBgColor }}>
       
         <Logo />
   
