@@ -13,7 +13,8 @@ const Main: React.FC<MainProps> = ({ currentBgColor, setCurrentBgColor }) => {
   const images = [
     { src: "./test.png", bgColor: "#130D17" },
     { src: "./test2.png", bgColor: "#244266" },
-    { src: "./image3.jpg", bgColor: "#3498db" },
+    { src: "./test.png", bgColor: "#3498db" },
+    { src: "./test3.jpg", bgColor: "#ffffff" },
   ];
 
   // const [currentBgColor, setCurrentBgColor] = useState<string>(images[0].bgColor);
