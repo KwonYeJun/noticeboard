@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 0.5px solid #cd1cd6;
+  border: 0.5px solid #1A51E8;
 }
 
 
@@ -40,4 +40,11 @@ li{
 img{
   height: 95%;
   width: 95%;
+}
+
+.gradient-text {
+  background-image: linear-gradient(45deg, #1ABEE8, #299BFF, #1A51E8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
