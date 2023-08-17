@@ -61,7 +61,7 @@ const itemStyle ={
         <motion.li style={itemStyle}    whileHover= {{scale :1.1}}
         variants={item}>Home</motion.li>
         <motion.li style={itemStyle}  whileHover= {{scale :1.1}} variants={item}>Home 2</motion.li>
-        <motion.li style={itemStyle}  whileHover= {{scale :1.1}} variants={item}>Home 3</motion.li>
+        <motion.li className="gradient-text" style={itemStyle}  whileHover= {{scale :1.1}} variants={item}>Home 3</motion.li>
         <motion.li
           style={itemStyle}
           whileHover={{ scale: 1.1 }}
@@ -70,6 +70,7 @@ const itemStyle ={
         >
           Login / auth
         </motion.li>
+        <p className="gradient-text">색상 그라데이션 텍스트</p>
       </motion.ul>
     </header>
 
