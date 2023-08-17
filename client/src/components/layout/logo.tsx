@@ -25,15 +25,15 @@ const Loge: React.FC = () => {
   }, []);
 
   const handleClick = () => {
-    window.open('');
+    window.open('https://blog.naver.com/sag7002');
   };
 
 
   return (
 
     <div className="logo" onClick={handleClick} ref={animationRef} style={{
-      width: '30%',
-      height: '100%'
+      width: '15%',
+      height: '60%'
     }}>
     </div>
 
