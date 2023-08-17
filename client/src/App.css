@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 0.5px solid #1A51E8;
+  /* border: 0.5px solid #1A51E8; */
 }
 
 
@@ -22,7 +22,8 @@ header {
   width: 100%;
   height: 30%;
   display: flex;
-
+  justify-content: center;
+  align-items: center;
 }
 
 main {
