@@ -8,7 +8,9 @@ const LoginCheckPage: React.FC = () => {
   return (
     <>
       {/* <KakaoLoginComponent /> */}
-        
+      500 , 652  
+      <img src='./textLogo.png' alt="asd" id="slider-image" />
+      <img src="" alt="" />
     </>
 
   )
