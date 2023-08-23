@@ -45,11 +45,11 @@ const LoginCheckPage: React.FC = () => {
             />
           </div>
           {/* <p onClick={}></p> */}
-          <div className="button-container">
+      
             <button className="login-button" onClick={handleLogin}>
-              <img src="../../img/singinBtn.png" alt="Login" />
+              <img src="../../img/test3.png" alt="Login" />
             </button>
-          </div>
+        
         </div>
 
       </div>
