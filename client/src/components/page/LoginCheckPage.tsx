@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import KakaoLoginComponent from '../service/KakaoLogin'
 import '../css/loginPage.css';
-import lottie from 'lottie-web';
-import logoAnimation from '../lottiefile/textLogo.json';
 
 const LoginCheckPage: React.FC = () => {
 
@@ -29,7 +27,8 @@ const LoginCheckPage: React.FC = () => {
     <>
       {/* <KakaoLoginComponent /> */}
       <div className="loginLayout">
-        <img src="./test.png" alt="asd" className='textLogo' />
+        <img src="../../img/textlogo.png" alt="asd" className='textLogo' />
+        
         <div className="login-form">
           <div className="input-container">
             <input
@@ -48,7 +47,7 @@ const LoginCheckPage: React.FC = () => {
           {/* <p onClick={}></p> */}
           <div className="button-container">
             <button className="login-button" onClick={handleLogin}>
-              <img src="./singinBtn.png" alt="Login" />
+              <img src="../../img/singinBtn.png" alt="Login" />
             </button>
           </div>
         </div>
