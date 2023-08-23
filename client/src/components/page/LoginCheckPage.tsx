@@ -9,24 +9,6 @@ const LoginCheckPage: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const animationRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (animationRef.current) {
-      const anim = lottie.loadAnimation({
-        container: animationRef.current,
-        renderer: 'svg',
-        loop: false,
-        autoplay: true,
-        animationData: logoAnimation
-      });
-
-      return () => {
-        anim.destroy();
-      };
-    }
-  }, []);
-
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
   };
@@ -40,6 +22,7 @@ const LoginCheckPage: React.FC = () => {
     console.log('Username:', username);
     console.log('Password:', password);
   };
+
 
 
   return (
@@ -62,18 +45,19 @@ const LoginCheckPage: React.FC = () => {
               onChange={handlePasswordChange}
             />
           </div>
+          {/* <p onClick={}></p> */}
           <div className="button-container">
-            <div ref={animationRef} style={{ width: '100px', height: '100px' }} />
-            <button onClick={handleLogin}>Login</button>
+            <button className="login-button" onClick={handleLogin}>
+              <img src="./singinBtn.png" alt="Login" />
+            </button>
           </div>
         </div>
+
       </div>
-
     </>
+  );
+};
 
-  )
-
-}
 
 
 
