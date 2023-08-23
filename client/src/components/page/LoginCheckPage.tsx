@@ -1,7 +1,7 @@
-import React, { useEffect, useState,useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import KakaoLoginComponent from '../service/KakaoLogin'
 import '../css/loginPage.css';
-import lottie from 'lottie-web'; 
+import lottie from 'lottie-web';
 import logoAnimation from '../lottiefile/textLogo.json';
 
 const LoginCheckPage: React.FC = () => {
@@ -22,7 +22,7 @@ const LoginCheckPage: React.FC = () => {
       });
 
       return () => {
-        anim.destroy(); // Cleanup the animation when the component unmounts
+        anim.destroy();
       };
     }
   }, []);
@@ -44,29 +44,29 @@ const LoginCheckPage: React.FC = () => {
 
   return (
     <>
-      {/* <KakaoLoginComponent /> */} 
+      {/* <KakaoLoginComponent /> */}
       <div className="loginLayout">
-      <img src="./test.png" alt="asd" className='textLogo' />
-      <div className="login-form">
-      <div className="input-container">
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={handleUsernameChange}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </div>
-      <div className="button-container">
-        <div ref={animationRef} style={{ width: '100px', height: '100px' }} />
-        <button onClick={handleLogin}>Login</button>
-      </div>
-    </div>
+        <img src="./test.png" alt="asd" className='textLogo' />
+        <div className="login-form">
+          <div className="input-container">
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={handleUsernameChange}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <div className="button-container">
+            <div ref={animationRef} style={{ width: '100px', height: '100px' }} />
+            <button onClick={handleLogin}>Login</button>
+          </div>
+        </div>
       </div>
 
     </>
