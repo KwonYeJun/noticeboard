@@ -5,3 +5,30 @@
   align-items: center;
   justify-content: center;
 }
+
+.loginLayout{
+  width: 400px;
+  height: 652px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.textLogo{
+  width: 276px;
+  height: 67px;
+}
+.login-form{
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 386px;
+}
