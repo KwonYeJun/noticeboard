@@ -65,7 +65,8 @@
 // export default LoginCheckPage
 
 
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import useSWR from 'swr';
 import { loginUser } from '../user-auth-login/path-to-login'; // API 요청 함수의 경로를 정확하게 설정해야 합니다.
 import '../css/loginPage.css';
@@ -89,6 +90,11 @@ const LoginCheckPage: React.FC = () => {
       // 에러 처리
     }
   };
+  const navigate = useNavigate(); // useNavigate 초기화
+
+const handleCreateUser = (path: string) =>{
+  navigate(path); // 페이지 이동
+}
 
   // SWR을 사용하여 데이터 패치
   const { data, error } = useSWR('user', () => loginUser(username, password));
@@ -120,7 +126,7 @@ const LoginCheckPage: React.FC = () => {
               onChange={handlePasswordChange}
             />
           </div>
-          {/* <p onClick={}></p> */}
+          <p className="gradient-text" onClick={() => handleCreateUser('/user/auth/createUser')}>sing up</p>
 
           <button className="login-button" onClick={handleLogin}>
             <img src="../../img/test3.png" alt="Login" className="normal-image" />
