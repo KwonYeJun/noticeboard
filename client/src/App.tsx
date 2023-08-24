@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import './App.css';
 import MainPage from './components/page/mainPage'
 import LoginCheckPage from './components/page/LoginCheckPage'
-
+import CreateUserPage from './components/page/CreateUserPage'
 
 function App() {
   const location = useLocation();
@@ -21,6 +21,7 @@ function App() {
           element={<MainPage currentBgColor={currentBgColor} setCurrentBgColor={setCurrentBgColor} />}
         />
         <Route path="/user/auth/login" element={<LoginCheckPage />} />
+        <Route path="/user/auth/createUser" element={<CreateUserPage />} />
         </Routes>
         {[
           "/"
