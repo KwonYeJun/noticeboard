@@ -118,6 +118,27 @@
 }
 
 
+.input-container> :nth-child(3) {
+  width: 300px;
+  height: 90px;
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, #1ABEE8, #299BFF, #1A51E8);
+  border-image-slice: 1;
+  border-radius: 10px;
+  padding: 10px;
+
+}
+
+.input-container> :nth-child(3):focus {
+  width: 300px;
+  height: 90px;
+  border: none;
+  background: linear-gradient(45deg, #1ABEE8, #299BFF, #1A51E8);
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px transparent, 0 0 0 4px transparent, 0 0 0 5px transparent, 0 0 0 6px transparent, 0 0 0 7px transparent, 0 0 0 8px transparent, 0 0 0 10px transparent, 0 0 0 12px transparent, 0 0 0 14px transparent, 0 0 0 16px transparent;
+  padding: 10px;
+}
+
 
 .login-button>img {
   width: 300px;
