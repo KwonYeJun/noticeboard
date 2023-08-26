@@ -85,12 +85,21 @@ const LoginCheckPage: React.FC = () => {
   const handleLogin = async () => {
     try {
       const data = await loginUser(userId, password);
-      // 로그인 성공 처리 및 다음 단계로 진행
+      // data에는 서버에서 반환한 정보가 들어있습니다.
+      if (data.token) {
+        // 토큰을 쿠키에 저장 (여기에서는 토큰을 jwtToken이라는 이름으로 저장)
+        document.cookie = `jwtToken=${data.token}`;
+        // 메인 페이지로 이동
+        navigate('/'); // 메인 페이지 경로로 변경하세요
+      }
     } catch (error) {
       // 에러 처리
     }
   };
+
   const navigate = useNavigate(); // useNavigate 초기화
+
+
 
 const handleCreateUser = (path: string) =>{
   navigate(path); // 페이지 이동
