@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
 import { AuthModule } from './auth/auth.module';
 import { MongooseModule } from '@nestjs/mongoose';
+
 @Module({
   imports: [ MongooseModule.forRoot('mongodb+srv://kyjuni1059:MriG6nf1DvzqO7Rb@cluster0.2nqst74.mongodb.net/user'), ConfigModule.forRoot({
     isGlobal: true,
