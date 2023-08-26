@@ -5,7 +5,9 @@ import '../css/loginPage.css';
 
 const CreateUserPage: React.FC = () => {
   const [userEmail, setUserEmail] = useState('');
-  const [username, setUsername] = useState('');
+  const [userName, setUsername] = useState('');
+  const [userId, setUserId] = useState('');
+
   const [password, setPassword] = useState('');
 
   const handleUserEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,6 +18,9 @@ const CreateUserPage: React.FC = () => {
     setUsername(event.target.value);
   };
 
+  const handleUseridChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserId(event.target.value);
+  };
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
@@ -24,12 +29,12 @@ const CreateUserPage: React.FC = () => {
 
   const handleCreateUser = async () => {
     try {
-      const response = await fetch('/api/createUser', {
+      const response = await fetch('/user/auth/createUser ', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ userEmail, username, password }),
+        body: JSON.stringify({ userName, userEmail, userId, password }),
       });
 
       if (response.ok) {
@@ -52,16 +57,22 @@ const CreateUserPage: React.FC = () => {
         <div className="login-form">
           <div className="input-container">
             <input
+              type="text"
+              placeholder="UserName"
+              value={userName}
+              onChange={handleUsernameChange}
+            />
+            <input
               type="email"
-              placeholder="Useremail"
+              placeholder="UserEmail"
               value={userEmail}
               onChange={handleUserEmailChange}
             />
             <input
               type="text"
-              placeholder="Username"
-              value={username}
-              onChange={handleUsernameChange}
+              placeholder="UserId"
+              value={userId}
+              onChange={handleUseridChange}
             />
             <input
               type="password"
