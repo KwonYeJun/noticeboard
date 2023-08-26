@@ -8,6 +8,9 @@ export class AuthController {
   @Post('/auth/createUser')
   async createUser(@Body() createUserDto: CreateUserDto) {
     console.log('CreateUserDto',createUserDto)
-    return this.authService.createUser(createUserDto);
+    this.authService.createUser(createUserDto)
+    // return this.authService.createUser(createUserDto);
+    return { message: '회원가입이 성공적으로 완료되었습니다.' };
+
   }
 }
