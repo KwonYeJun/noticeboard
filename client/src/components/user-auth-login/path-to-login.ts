@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://your-server-api-url';
+const API_BASE_URL = '/user/auth';
 
 // 로그인 요청을 보내는 함수
 export const loginUser = async (username: string, password: string) => {
