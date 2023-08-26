@@ -35,17 +35,21 @@ const CreateUserPage: React.FC = () => {
         },
         body: JSON.stringify({ userName, userEmail, userId, password }),
       });
-
+  
       if (response.ok) {
         // 회원가입 성공 처리
-        navigate('/login'); // 회원가입이 성공하면 로그인 페이지로 이동
+        alert('회원가입이 정상적으로 완료되었습니다.');
+        navigate('/user/auth/login'); // 회원가입이 성공하면 로그인 페이지로 이동
       } else {
         // 회원가입 실패 처리
+        alert('회원가입에 실패했습니다. 다시 시도해주세요.');
       }
     } catch (error) {
       // 에러 처리
+      alert('오류가 발생했습니다. 다시 시도해주세요.');
     }
   };
+  
 
   return (
     <>
