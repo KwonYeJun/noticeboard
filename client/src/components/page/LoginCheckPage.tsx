@@ -71,11 +71,11 @@ import useSWR from 'swr';
 import { loginUser } from '../user-auth-login/path-to-login'; // API 요청 함수의 경로를 정확하게 설정해야 합니다.
 import '../css/loginPage.css';
 const LoginCheckPage: React.FC = () => {
-  const [username, setUsername] = useState('');
+  const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
+    setUserId(event.target.value);
   };
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,7 +84,7 @@ const LoginCheckPage: React.FC = () => {
 
   const handleLogin = async () => {
     try {
-      const data = await loginUser(username, password);
+      const data = await loginUser(userId, password);
       // 로그인 성공 처리 및 다음 단계로 진행
     } catch (error) {
       // 에러 처리
@@ -97,7 +97,7 @@ const handleCreateUser = (path: string) =>{
 }
 
   // SWR을 사용하여 데이터 패치
-  const { data, error } = useSWR('user', () => loginUser(username, password));
+  const { data, error } = useSWR('user', () => loginUser(userId, password));
 
   // 데이터 로딩 중 처리
   if (!data && !error) {
@@ -115,8 +115,8 @@ const handleCreateUser = (path: string) =>{
           <div className="input-container">
             <input
               type="text"
-              placeholder="Username"
-              value={username}
+              placeholder="UserID"
+              value={userId}
               onChange={handleUsernameChange}
             />
             <input
