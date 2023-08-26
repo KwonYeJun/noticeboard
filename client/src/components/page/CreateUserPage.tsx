@@ -10,14 +10,13 @@ const CreateUserPage: React.FC = () => {
 
   const [password, setPassword] = useState('');
 
-  const handleUserEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserEmail(event.target.value);
-  };
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
   };
-
+  const handleUserEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserEmail(event.target.value);
+  };
   const handleUseridChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserId(event.target.value);
   };
@@ -29,7 +28,7 @@ const CreateUserPage: React.FC = () => {
 
   const handleCreateUser = async () => {
     try {
-      const response = await fetch('/user/auth/createUser ', {
+      const response = await fetch('/user/auth/createUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
