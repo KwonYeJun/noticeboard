@@ -7,7 +7,7 @@ const CreateUserPage: React.FC = () => {
   const [userEmail, setUserEmail] = useState('');
   const [userName, setUsername] = useState('');
   const [userId, setUserId] = useState('');
-
+  const [usernameError, setUsernameError] = useState<string>('');
   const [password, setPassword] = useState('');
 
 
@@ -35,7 +35,7 @@ const CreateUserPage: React.FC = () => {
         },
         body: JSON.stringify({ userName, userEmail, userId, password }),
       });
-  
+
       if (response.ok) {
         // 회원가입 성공 처리
         alert('회원가입이 정상적으로 완료되었습니다.');
@@ -49,7 +49,31 @@ const CreateUserPage: React.FC = () => {
       alert('오류가 발생했습니다. 다시 시도해주세요.');
     }
   };
-  
+  const handleUsernameBlur = async () => {
+    if (userName.trim() === '') {
+      setUsernameError('아이디를 입력해주세요.');
+      return;
+    }
+
+    try {
+      const response = await fetch('/user/auth/checkUsername', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId: userName }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setUsernameError(data.message);
+      } else {
+        setUsernameError('');
+      }
+    } catch (error) {
+      setUsernameError('서버와의 통신 중 오류가 발생했습니다.');
+    }
+  };
 
   return (
     <>
@@ -64,7 +88,9 @@ const CreateUserPage: React.FC = () => {
               placeholder="UserName"
               value={userName}
               onChange={handleUsernameChange}
+              onBlur={handleUsernameBlur} // 아이디 입력 완료 후 포커스를 잃었을 때 아이디 중복 확인 실행
             />
+            {usernameError && <span className="error-message">{usernameError}</span>}
             <input
               type="email"
               placeholder="UserEmail"

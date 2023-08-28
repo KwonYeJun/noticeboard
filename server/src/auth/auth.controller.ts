@@ -27,5 +27,15 @@ export class AuthController {
     const token = this.authService.generateToken(user);
     return { token, user };
   }
+
+
+  @Post('/checkUsername')// id중복확인 요청
+async checkUsername(@Body() { userId }: { userId: string }) {
+  const user = await this.authService.findUserByUserId(userId);
+  if (user) {
+    throw new HttpException('이미 사용 중인 아이디입니다.', HttpStatus.BAD_REQUEST);
+  }
+  return { message: '사용 가능한 아이디입니다.' };
+}
   
 }

@@ -8,7 +8,7 @@ import { JwtModule } from '@nestjs/jwt';
   imports: [JwtModule.register({
     // JwtModule 설정
     secret: 'exampleKey', // 시크릿 키 설정
-    signOptions: { expiresIn: '1h', algorithm: 'HS256' }, // 생성 옵션 설정
+    signOptions: { expiresIn: '10s', algorithm: 'HS256' }, // 생성 옵션 설정
     verifyOptions: { ignoreExpiration: false }, // 검증 옵션 설정
   }),
   MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),

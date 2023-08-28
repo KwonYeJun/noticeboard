@@ -10,10 +10,6 @@ import { JwtService } from '@nestjs/jwt';
 export class AuthService {
   constructor(@InjectModel(User.name) private userModel: Model<User>,private jwtService: JwtService) {}
 
-  // async createUser(createUserDto: CreateUserDto) {
-  //   const createdUser = new this.userModel(createUserDto);
-  //   return createdUser.save();
-  // }
   async createUser(createUserDto: CreateUserDto) {
     const { password, ...rest } = createUserDto;
     const hashedPassword = await bcrypt.hash(password, 10); // 10은 해시 라운드 수를 나타냄
@@ -37,4 +33,11 @@ export class AuthService {
     const payload = { sub: user.userId, userEmail: user.userEmail }; // 토큰에 넣을 정보 설정
     return this.jwtService.sign(payload);
   }
+
+
+
+  async findUserByUserId(userId: string) {
+    return this.userModel.findOne({ userId });
+  }
+
 }
