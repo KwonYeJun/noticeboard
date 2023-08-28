@@ -27,6 +27,11 @@ const CreateUserPage: React.FC = () => {
   const navigate = useNavigate(); // useNavigate 초기화
 
   const handleCreateUser = async () => {
+    if (usernameError) {
+      alert('아이디를 확인해주세요.');
+      return;
+    }
+
     try {
       const response = await fetch('/user/auth/createUser', {
         method: 'POST',
@@ -49,6 +54,7 @@ const CreateUserPage: React.FC = () => {
       alert('오류가 발생했습니다. 다시 시도해주세요.');
     }
   };
+
   const handleUsernameBlur = async () => {
     if (userName.trim() === '') {
       setUsernameError('아이디를 입력해주세요.');
@@ -61,7 +67,7 @@ const CreateUserPage: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ userId: userName }),
+        body: JSON.stringify({ userId: userId }),
       });
 
       if (!response.ok) {
@@ -82,35 +88,35 @@ const CreateUserPage: React.FC = () => {
         <img src="../../img/textlogo.png" alt="asd" className="textLogo" />
 
         <div className="login-form">
-          <div className="input-container">
-            <input
-              type="text"
-              placeholder="UserName"
-              value={userName}
-              onChange={handleUsernameChange}
-              onBlur={handleUsernameBlur} // 아이디 입력 완료 후 포커스를 잃었을 때 아이디 중복 확인 실행
-            />
-            {usernameError && <span className="error-message">{usernameError}</span>}
-            <input
-              type="email"
-              placeholder="UserEmail"
-              value={userEmail}
-              onChange={handleUserEmailChange}
-            />
-            <input
-              type="text"
-              placeholder="UserId"
-              value={userId}
-              onChange={handleUseridChange}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </div>
-          <button onClick={handleCreateUser}>Create User</button>
+        <div className="input-container">
+        <input
+          type="text"
+          placeholder="UserName"
+          value={userName}
+          onChange={handleUsernameChange}
+        />
+        <input
+          type="email"
+          placeholder="UserEmail"
+          value={userEmail}
+          onChange={handleUserEmailChange}
+        />
+        <input
+          type="text"
+          placeholder="UserId"
+          value={userId}
+          onChange={handleUseridChange}
+          onBlur={handleUsernameBlur}
+        />
+        {usernameError && <span className="error-message">{usernameError}</span>}
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+      </div>
+      <button onClick={handleCreateUser}>Create User</button>
         </div>
       </div>
     </>
