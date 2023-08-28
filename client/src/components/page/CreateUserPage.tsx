@@ -60,13 +60,38 @@ const CreateUserPage: React.FC = () => {
     }
   };
 
-  const handleUsernameBlur = () => {
+
+  const handleUsernameBlur = async () => {
+    if (userName.trim() === '') {
+      setUsernameError('아이디를 입력해주세요.');
+      return;
+    }
     if (!/^[a-zA-Z0-9_-]{4,16}$/.test(userName)) {
       setUsernameError('4~16자의 영문 대소문자, 숫자, 특수기호(-, _)만 사용 가능합니다.');
     } else {
       setUsernameError('');
     }
+
+    try {
+      const response = await fetch('/user/auth/checkUsername', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId: userId }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setUsernameError(data.message);
+      } else {
+        setUsernameError('');
+      }
+    } catch (error) {
+      setUsernameError('서버와의 통신 중 오류가 발생했습니다.');
+    }
   };
+
 
   const handleEmailBlur = () => {
     if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(userEmail)) {
@@ -97,7 +122,7 @@ const CreateUserPage: React.FC = () => {
               placeholder="UserName"
               value={userName}
               onChange={handleUsernameChange}
-              onBlur={handleUsernameBlur}
+             
             />
             {usernameError && <span className="error-message">{usernameError}</span>}
             <input
@@ -113,8 +138,9 @@ const CreateUserPage: React.FC = () => {
               placeholder="UserId"
               value={userId}
               onChange={handleUseridChange}
-              onBlur={handleUsernameBlur} 
-            />
+              onBlur={handleUsernameBlur}
+              />
+              {usernameError && <span className="error-message">{usernameError}</span>}
             <input
               type="password"
               placeholder="Password"
