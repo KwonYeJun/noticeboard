@@ -1,11 +1,11 @@
-import { Controller, Post, Body, HttpException, HttpStatus,UnauthorizedException  } from '@nestjs/common';
+import { Controller, Post, Body, HttpException, HttpStatus, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user/login-user.dto'; // 추가
 
 @Controller('user/auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
   @Post('/createUser')
   async createUser(@Body() createUserDto: CreateUserDto) {
@@ -18,7 +18,7 @@ export class AuthController {
   async login(@Body() loginUserDto: LoginUserDto) {
     const user = await this.authService.validateUser(loginUserDto);
 
-    console.log('user',user)
+    console.log('user', user)
     if (!user) {
       throw new UnauthorizedException('로그인 실패');
 
@@ -30,12 +30,17 @@ export class AuthController {
 
 
   @Post('/checkUsername')// id중복확인 요청
-async checkUsername(@Body() { userId }: { userId: string }) {
-  const user = await this.authService.findUserByUserId(userId);
-  if (user) {
-    throw new HttpException('이미 사용 중인 아이디입니다.', HttpStatus.BAD_REQUEST);
+  async checkUsername(@Body() { userId }: { userId: string }) {
+    const user = await this.authService.findUserByUserId(userId);
+    if (user) {
+      throw new HttpException('이미 사용 중인 아이디입니다.', HttpStatus.BAD_REQUEST);
+    }
+    return { message: '사용 가능한 아이디입니다.' };
   }
-  return { message: '사용 가능한 아이디입니다.' };
-}
-  
+
+  @Post('kakaologin')
+  async createKakaoUser(@Body('code') code: string) {
+    return this.authService.createKakaoUser(code);
+  }
+
 }

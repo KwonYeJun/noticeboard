@@ -51,6 +51,7 @@
 
 import React, { useState, useEffect } from 'react';
 import useSWR from 'swr';
+import { useNavigate } from 'react-router-dom'; // 변경
 
 const meKey = 'ab73463344398ef2f9f175e4c8801d20';
 const Redirect_URL = 'http://localhost:2222/';
@@ -72,12 +73,18 @@ const KakaoLoginComponent: React.FC = () => {
   const [popup, setPopup] = useState<Window | null>(null);
 //모달창 로딩 설정 하기
 const [isLoading, setIsLoading] = useState(false);
+const navigate = useNavigate(); // 변경
 
   // useSWR 훅 호출을 조건부가 아닌 항상 일정하게 호출되게 수정
   const { data, error } = useSWR(
-    authorizationCode ? `/kakao-login/userinfo?code=${authorizationCode}` : null,
+    authorizationCode ? `/user/auth/kakaologin?code=${authorizationCode}` : null,
     fetcher
   );
+  
+  // const { data, error } = useSWR(
+  //   authorizationCode ? `/kakao-login/userinfo?code=${authorizationCode}` : null,
+  //   fetcher
+  // );
   const handleKakaoLogin = () => {
     const kakaoAuthURL = `https://kauth.kakao.com/oauth/authorize?client_id=${meKey}&redirect_uri=${Redirect_URL}&response_type=code`;
     // 모달창이 뜨기 위하여 메서드 수정
@@ -90,6 +97,23 @@ const [isLoading, setIsLoading] = useState(false);
       setPopup(null);
     }
   };
+
+  useEffect(() => {
+    if (data) {
+      // 예: 로그인 처리
+      localStorage.setItem('token', data.token);
+      // 예: 사용자 데이터 저장
+      localStorage.setItem('user', JSON.stringify(data.user));
+    }
+  }, [data]);
+  
+  useEffect(() => {
+    if (error) {
+      console.error(error);
+      alert('로그인 과정에서 오류가 발생했습니다.');
+    }
+  }, [error]);
+  
 
   //변경 전 버전
   // useEffect(() => {
@@ -122,7 +146,7 @@ useEffect(() => {
   
         setIsLoading(false); // 토큰 요청이 완료되면 로딩 상태를 false로 변경
         setPopup(null); // 모달 창 닫기
-        window.location.reload(); // 페이지 다시 로드
+        navigate('/'); // 메인 페이지(/)로 이동
       } catch (error) {
         console.error("Failed to complete login:", error);
   

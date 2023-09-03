@@ -6,9 +6,15 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user/login-user.dto'; // 추가
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { KakaoLoginService } from '../kakao-login/kakao-login.service';
 @Injectable()
 export class AuthService {
-  constructor(@InjectModel(User.name) private userModel: Model<User>,private jwtService: JwtService) {}
+  constructor(
+    @InjectModel(User.name) private userModel: Model<User>,
+    private jwtService: JwtService,
+    private kakaoLoginService: KakaoLoginService, // KakaoLoginService 주입
+  ) {}
+
 
   async createUser(createUserDto: CreateUserDto) {
     const { password, ...rest } = createUserDto;
@@ -40,4 +46,10 @@ export class AuthService {
     return this.userModel.findOne({ userId });
   }
 
+  //카카오 로그인
+  async createKakaoUser(code: string) {
+    const kakaoUser = await this.kakaoLoginService.getUserInfo(code);
+    console.log('kakaoUser',kakaoUser);
+    return this.createUser(kakaoUser);
+  }
 }

@@ -6,6 +6,7 @@ import { HttpModule } from '@nestjs/axios';
   imports: [HttpModule],
   
   providers: [KakaoLoginService],
-  controllers: [KakaoLoginController]
+  controllers: [KakaoLoginController],
+  exports: [KakaoLoginService], // 필요한 경우 export 해줍니다.
 })
 export class KakaoLoginModule {}
