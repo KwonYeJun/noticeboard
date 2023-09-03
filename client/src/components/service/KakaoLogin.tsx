@@ -110,28 +110,29 @@ useEffect(() => {
 }, [popup]);
 
   // 토큰 요청 전에 로딩 상태를 true로 변경
-const receiveMessage = async (event: MessageEvent) => {
-  if (event.data === "kakao-login-success") {
-    setIsLoading(true);
-
-    try {
-      const response = await fetch("/kakao-login/token");
-      const data = await response.json();
-
-      // 서버에서 받아온 데이터를 이용하여 필요한 작업 수행
-
-      setIsLoading(false); // 토큰 요청이 완료되면 로딩 상태를 false로 변경
-      setPopup(null); // 모달 창 닫기
-      window.location.reload();
-    } catch (error) {
-      console.error("Failed to complete login:", error);
-
-      // 에러 발생 시 로딩 상태 역시 false로 변경
-      setIsLoading(false); 
-      setPopup(null); // 모달 창 닫기
+  const receiveMessage = async (event: MessageEvent) => {
+    if (event.data === "kakao-login-success") {
+      setIsLoading(true);
+  
+      try {
+        const response = await fetch("/kakao-login/token");
+        const data = await response.json();
+  
+        // 서버에서 받아온 데이터를 이용하여 필요한 작업 수행
+  
+        setIsLoading(false); // 토큰 요청이 완료되면 로딩 상태를 false로 변경
+        setPopup(null); // 모달 창 닫기
+        window.location.reload(); // 페이지 다시 로드
+      } catch (error) {
+        console.error("Failed to complete login:", error);
+  
+        // 에러 발생 시 로딩 상태 역시 false로 변경
+        setIsLoading(false); 
+        setPopup(null); // 모달 창 닫기
+      }
     }
-  }
-};
+  };
+  
 
   return (
     <div>
