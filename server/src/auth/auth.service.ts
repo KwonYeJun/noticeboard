@@ -35,7 +35,7 @@ export class AuthService {
   }
 
 
-
+//아이디 중복 검사
   async findUserByUserId(userId: string) {
     return this.userModel.findOne({ userId });
   }

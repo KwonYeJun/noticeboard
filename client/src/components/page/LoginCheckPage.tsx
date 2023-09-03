@@ -69,6 +69,8 @@ import React, { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSWR from 'swr';
 import { loginUser } from '../user-auth-login/path-to-login'; // API 요청 함수의 경로를 정확하게 설정해야 합니다.
+import KakaoLoginComponent from '../service/KakaoLogin'
+
 import '../css/loginPage.css';
 const LoginCheckPage: React.FC = () => {
   const [userId, setUserId] = useState('');
@@ -115,7 +117,7 @@ const handleCreateUser = (path: string) =>{
 
   return (
     <>
-      {/* <KakaoLoginComponent /> */}
+      <KakaoLoginComponent />
       <div className="loginLayout">
         <div className="loginBorderAnimation"></div>
         <img src="../../img/textlogo.png" alt="asd" className='textLogo' />
